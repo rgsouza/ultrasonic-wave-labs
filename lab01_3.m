@@ -1,3 +1,9 @@
+% Author: Rayanne Souza
+% Last modified: 10 Jun 2019
+% Info: Script used to measure the ultrasonic wave speed
+% in a plate immersed in water
+%
+
 clc
 clear 
 close all
@@ -9,7 +15,7 @@ file3 = '2019_05_28_17_20_43_steelD1=21.5Grupo 4-Lab2 placa20mm metal - Sinal 3 
 file4 = '2019_05_28_17_22_2_steelD1=21.5Grupo 4-Lab2 placa20mm metal - Sinal 4 - ganho 20dB.mat'
 file5 = '2019_05_28_17_22_52_steelD1=21.5Grupo 4-Lab2 placa20mm metal - Sinal 5 GRUPAO - ganho 20dB.mat'
 
-% arquivos para chapas finas
+% Files for thin sheets
 file6 = '2019_05_28_17_26_36_steelD1=21.5Grupo TODOS-Lab2 placa3.05mm metal - 0dB.mat'
 file7 = '2019_05_28_17_29_34_steelD1=21.5Grupo TODOS-Lab2 placa2.0mm metal - 0dB.mat'
 
@@ -24,7 +30,7 @@ s2mm = load(strcat(dir,file7))
 d_agua = 34.7e-3
 d_steel = 20e-3
 
-% Determinando tempos de pico
+% The time of peak occurrence
 [m_p, i_p1] = max(s1.w)
 [m_p, i_p2] = max(s2.w)
 [m_p, i_p3] = max(s3.w)
@@ -35,9 +41,9 @@ tp_fundo1 = s2.t_d(i_p2)
 tp_fundo2 = s3.t_d(i_p3)
 tp_agua2 = s4.t_d(i_p4)
 
-% Calcula velocidade da agua
+% Water speed
 c_agua = 2*d_agua/(tp_agua2- tp_agua1)
-% Calcula velocidade do aço
+% Steel speed
 c_steel = 2*d_steel/(tp_fundo2- tp_fundo1)
 
 
@@ -88,7 +94,7 @@ ylabel('y(V)')
 title('Segundo eco da interface água-aço')
 
 %------------------------------------------------------
-% Plot chapas finas 
+% Plot for the thin sheets
 figure(2)
 plot(s3mm.t_d,s3mm.w)
 

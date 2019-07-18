@@ -1,3 +1,9 @@
+% Author: Rayanne Souza
+% Last modified: 11 Jun 2019
+% Info: Script used to measure the impedance of a unknown medium (water)
+% by applying relative reflection method
+%
+
 clc
 clear 
 close all
@@ -13,19 +19,19 @@ c_acr = 2755.4
 rho = 1217.3
 Zacr = c_acr*rho
 
-% Obtem a amplitude maxima para ambos sinais
+% Maximum signal amplitude for both signal
 [max_air, imax_air] = max(s_air.w)
 [max_water, imax_water] = max(s_water.w)
 
-% Obtem a amplitude minima
+% Minimum signal amplitude for both signal
 [min_air, imin_air] = min(s_air.w)
 [min_water, imin_water] = min(s_water.w)
 
-% Calcula impedancia pelos maximos
+% Computes impedance from maximum value
 R_max = -max_water/max_air
 Z1 = Zacr*(1 + R_max)/(1-R_max)
 
-% Calcula impedancia com pico-a-pico
+% Computes impedance from peak-to-peak
 R_pp = -(max_water-min_water)/(max_air-min_air)
 Z2 = Zacr*(1 + R_pp)/(1-R_pp)
 
